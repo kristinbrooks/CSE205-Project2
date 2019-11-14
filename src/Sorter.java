@@ -4,11 +4,18 @@
 // DESCRIPTION
 // Implements the insertion sort algorithm to sort an ArrayList<> of Students.
 //
+// COURSE AND PROJECT INFO
+// CSE205 Object Oriented Programming and Data Structures, Fall B 2019
+// Project Number: 2
+//
 // AUTHOR
 // Kevin R. Burger (burgerk@asu.edu)
 // Computer Science & Engineering Program
 // Fulton Schools of Engineering
 // Arizona State University, Tempe, AZ 85287-8809
+//
+// SUBMITTED BY
+// Kristin Brooks, krbrook7, krbrook7@asu.edu
 //**************************************************************************************************
 import java.util.ArrayList;
 

@@ -4,12 +4,23 @@
 // DESCRIPTION
 // The Main class for Project 2.
 //
+// COURSE AND PROJECT INFO
+// CSE205 Object Oriented Programming and Data Structures, Fall B 2019
+// Project Number: 2
+//
 // AUTHOR
 // Kevin R. Burger (burgerk@asu.edu)
 // Computer Science & Engineering
 // School of Computing, Informatics, and Decision Systems Engineering
 // Fulton Schools of Engineering
 // Arizona State University, Tempe, AZ 85287-8809
+//
+// EDITED
+// The original file was the the pseudocode and method descriptions. The file was edited to add
+// the code and remove the pseudocode.
+//
+// EDITED BY
+// Kristin Brooks, krbrook7, krbrook7@asu.edu
 //**************************************************************************************************
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -25,15 +36,14 @@ public class Main {
      * Instantiate a Main object and call run() on the object. Note that essentially now,
      * run() becomes the starting point of execution for the program.
      */
-    ???
+    public static void main(String[] args) {
+        new Main.run();
+    }
 
     /**
-     * run()
+     * main()
      *
      * Calls other methods to implement the sw requirements.
-     *
-     * PSEUDOCODE
-     * Declare ArrayList<Student> object named studentList and initialize it to null
      *
      * -- In the try-catch block we try to read the list of students from p02-students.txt
      * -- storing the students in the studentList list. If we cannot open the input file for
@@ -64,7 +74,12 @@ public class Main {
      *     Call System.exit(-1)
      * end try-catch
      */
-    ???
+    public void run() {
+        ArrayList<Student> studentList = null;
+        try {
+            studentList = readFile();
+        }
+    }
 
     /**
      * calcTuition()
@@ -86,22 +101,21 @@ public class Main {
      * Reads the student information from "p02-students.txt" and returns the list of students as
      * an ArrayList<Student> object. Note that this method throws FileNotFoundException if the
      * input file could not be opened. The exception is caught and handled in run().
-     *
-     * PSEUDOCODE
-     * Declare and create an ArrayList<Student> object named studentList
-     * Open "p02-students.txt" for reading using a Scanner object named in
-     * While in.hasNext() returns true Do
-     *     String studentType <= read next string from in
-     *     If studentType is "C" Then
-     *         studentList.add(readOnCampusStudent(in))
-     *     Else
-     *         studentList.add(readOnlineStudent(in))
-     *     End If
-     * End While
-     * Close the scanner
-     * Return studentList
      */
-    ???
+    public ArrayList<Student> readFile() throws FileNotFoundException {
+        ArrayList<Student> studentList = new ArrayList<>();
+        Scanner input = new Scanner(new File ("p02-students.txt"));
+        while (input.hasNext()) {
+            String studentType = input.next();
+            if (studentType.equals("C")) {
+                studentList.add(readOnCampusStudent(input));
+            } else {
+                studentList.add(readOnlineStudent(input));
+            }
+        }
+        Scanner.close();
+        return studentList;
+    }
 
     /**
      * readOnCampusStudent()

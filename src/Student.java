@@ -1,10 +1,14 @@
 //**************************************************************************************************
-// CLASS: Student
+// CLASS: Student (Student.java)
 //
 // DESCRIPTION
 // Student is an abstract class and is the superclass for the OnCampusStudent and OnlineStudent
 // classes. Remember that in a class hierarchy, the superclass declares data and methods that are
 // common to all types of students.
+//
+// COURSE AND PROJECT INFO
+// CSE205 Object Oriented Programming and Data Structures, Fall B 2019
+// Project Number: 2
 //
 // AUTHOR
 // Kevin R. Burger (burgerk@asu.edu)
@@ -12,19 +16,34 @@
 // School of Computing, Informatics, and Decision Systems Engineering
 // Fulton Schools of Engineering
 // Arizona State University, Tempe, AZ 85287-8809
+//
+// EDITED
+// The original file was the the pseudocode, method descriptions, and the compareTo method.
+// The file was edited to add the rest of the code and remove the pseudocode.
+//
+// EDITED BY
+// Kristin Brooks, krbrook7, krbrook7@asu.edu
 //**************************************************************************************************
 public abstract class Student implements Comparable<Student> {
 
     // Declare private instance data
-    ???
+    private int credits;
+    private String firstName;
+    private String lastName;
+    private String id;
+    private double tuition;
 
     /**
      * Student(String, String, String)
      *
-     * Creates a Student object and initializes the mId, mFname, and mLname instance variables by
+     * Creates a Student object and initializes the id, firstName, and lastName instance variables by
      * calling the mutator methods.
      */
-    ???
+    public Student(String firstName, String lastName, String id) {
+        setFirstName(firstName);
+        setLastName(lastName);
+        setId(id);
+    }
 
     /**
      * abstract calcTuition()
@@ -36,7 +55,7 @@ public abstract class Student implements Comparable<Student> {
      * tuition for an OnCampusStudent is different than how we calculate the tuition for an Online-
      * Student.
      */
-    ???
+    public abstract void calcTuition();
 
     /**
      * The java.lang.Comparable<T> interface declares one method int compareTo(T obj) that must be
@@ -55,58 +74,77 @@ public abstract class Student implements Comparable<Student> {
      * returns.
      */
     @Override
-    public int compareTo(Student pStudent) {
-        return getId().compareTo(pStudent.getId());
+    public int compareTo(Student student) {
+        return getId().compareTo(student.getId());
     }
 
     /**
-     * Accessor method for mCredits.
+     * Accessor method for credits.
      */
-    ???
+    public int getCredits() {
+        return credits;
+    }
 
     /**
-     * Accessor method for mFname.
+     * Accessor method for firstName.
      */
-    ???
+    public String getFirstName() {
+        return firstName;
+    }
 
     /**
-     * Accessor method for mId.
+     * Accessor method for id.
      */
-    ???
+    public String getId() {
+        return id;
+    }
 
     /**
-     * Accessor method for mLname.
+     * Accessor method for lastName.
      */
-    ???
+    public String getLastName() {
+        return lastName;
+    }
 
     /**
-     * Accessor method for mTuition.
+     * Accessor method for tuition.
      */
-    ???
+    public double getTuition() {
+        return tuition;
+    }
 
     /**
-     * Mutator method for mCredits.
+     * Mutator method for credits.
      */
-    ???
+    public void setCredits(int credits) {
+        this.credits = credits;
+    }
 
     /**
-     * Mutator method for mFname.
+     * Mutator method for firstName.
      */
-    ???
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
 
     /**
-     * Mutator method for mId.
+     * Mutator method for id.
      */
-    ???
+    public void setId(String id) {
+        this.id = id;
+    }
 
     /**
-     * Mutator method for mLname.
+     * Mutator method for lastName.
      */
-    ???
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
 
     /**
-     * Mutator method for mTuition.
+     * Mutator method for tuition.
      */
-    ???
-
+    protected void setTuition() {
+        this.tuition = tuition;
+    }
 }
