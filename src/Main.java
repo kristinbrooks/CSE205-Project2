@@ -79,7 +79,7 @@ public class Main {
      */
     private ArrayList<Student> readFile() throws FileNotFoundException {
         ArrayList<Student> studentList = new ArrayList<>();
-        Scanner input = new Scanner(new File ("p02-students.txt"));
+        Scanner input = new Scanner(new File ("src/p02-students.txt"));
         while (input.hasNext()) {
             String studentType = input.next();
             if (studentType.equals("C")) {
@@ -138,10 +138,11 @@ public class Main {
      * and handled in run().
      */
     private void writeFile(ArrayList<Student> studentList) throws FileNotFoundException {
-        PrintWriter output = new PrintWriter("p02-tuition.txt");
+        PrintWriter output = new PrintWriter("src/p02-tuition.txt");
         for (Student student : studentList) {
-            output.printf("%-16s%-20s%-15s%8.2f", student.getId() + student.getLastName()
-                    + student.getFirstName() + student.getTuition());
+            output.printf("%-16s%-20s%-15s%8.2f", student.getId(), student.getLastName(),
+                    student.getFirstName(), student.getTuition());
+            output.println();
         }
         output.close();
     }
