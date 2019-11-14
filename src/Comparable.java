@@ -1,5 +1,5 @@
 //**************************************************************************************************
-// CLASS: Comparable (Comparable.java)
+// INTERFACE: Comparable (Comparable.java)
 //
 // DESCRIPTION
 // Comparable is an interface to compare Student objects.

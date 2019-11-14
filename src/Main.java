@@ -22,6 +22,7 @@
 // EDITED BY
 // Kristin Brooks, krbrook7, krbrook7@asu.edu
 //**************************************************************************************************
+import javax.swing.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
@@ -31,78 +32,52 @@ import java.util.Scanner;
 public class Main {
 
     /**
-     * main()
-     *
      * Instantiate a Main object and call run() on the object. Note that essentially now,
      * run() becomes the starting point of execution for the program.
      */
     public static void main(String[] args) {
-        new Main.run();
+        Main main = new Main();
+        main.run();
     }
 
     /**
-     * main()
-     *
      * Calls other methods to implement the sw requirements.
-     *
-     * -- In the try-catch block we try to read the list of students from p02-students.txt
-     * -- storing the students in the studentList list. If we cannot open the input file for
-     * -- reading, then we output an error message and terminate the program.
-     * try
-     *     studentList = readFile()
-     * catch (FileNotFoundException)
-     *     Print "Sorry, could not open 'p02-students.txt' for reading. Stopping."
-     *     Call System.exit(-1)
-     * end try-catch
-     *
-     * -- Calculate the tuition for each Student in studentList
-     * calcTuition(studentList)
-     *
-     * -- Sort the students in studentList into ascending order based on student identifier
-     * -- Note that Sorter.insertionSort() is a static/class method so we do not have to instantiate
-     * -- an object of the Sorter class, we just write class-name.static-method-name() to call a 
-     * -- static method in a class.
-     * Call Sorter.insertionSort(studentList, Sorter.SORT_ASCENDING) to sort the list
-     *
-     * -- In the try-catch block we try to write the list of students and their calculated tuitions
-     * -- to p02-tuition.txt If we cannot open the output file for writing, then we output an error
-     * -- message and terminate the program.
-     * try
-     *     writeFile(studentList)
-     * catch (FileNotFoundException)
-     *     Print "Sorry, could not open 'p02-tuition.txt' for writing. Stopping."
-     *     Call System.exit(-1)
-     * end try-catch
      */
-    public void run() {
+    private void run() {
         ArrayList<Student> studentList = null;
         try {
             studentList = readFile();
+        } catch (FileNotFoundException noInputFile) {
+            System.out.println("Sorry, could not open 'p02-students.txt' for reading. Stopping.");
+            System.exit(-1);
+        }
+        calcTuition(studentList);
+        Sorter.insertionSort(studentList, Sorter.SORT_ASCENDING);
+        try {
+            writeFile(studentList);
+        } catch (FileNotFoundException noOutputFile) {
+            System.out.println("Sorry, could not open 'p02-tuition.txt' for writing. Stopping.");
+            System.exit(-1);
         }
     }
 
     /**
-     * calcTuition()
-     *
      * Calculates the tuition for each Student in pStudentList. Write an enhanced for loop that
      * iterates over each Student in pStudentList. For each Student, call calcTuition() on that
      * Student object. Note: this is a polymorphic method call. What does that mean?
-     *
-     * PSEUDOCODE
-     * Enhanced ForEach student in pStudentList Do
-     *     student.calcTuition()
-     * End Enhanced ForEach
      */
-    ???
+    private void calcTuition(ArrayList<Student> studentList) {
+        for (Student student : studentList) {
+            student.calcTuition();
+        }
+    }
 
     /**
-     * readFile()
-     *
      * Reads the student information from "p02-students.txt" and returns the list of students as
      * an ArrayList<Student> object. Note that this method throws FileNotFoundException if the
      * input file could not be opened. The exception is caught and handled in run().
      */
-    public ArrayList<Student> readFile() throws FileNotFoundException {
+    private ArrayList<Student> readFile() throws FileNotFoundException {
         ArrayList<Student> studentList = new ArrayList<>();
         Scanner input = new Scanner(new File ("p02-students.txt"));
         while (input.hasNext()) {
@@ -113,69 +88,61 @@ public class Main {
                 studentList.add(readOnlineStudent(input));
             }
         }
-        Scanner.close();
+        input.close();
         return studentList;
     }
 
     /**
-     * readOnCampusStudent()
-     * 
      * Reads the information for an on-campus student from the input file.
-     *
-     * PSEUDOCODE
-     * Declare String object id and assign pIn.next() to id
-     * Declare String object named lname and assign pIn.next() to lname
-     * Declare String object named fname and assign pIn.next() to fname
-     * Declare and create an OnCampusStudent object. Pass id, fname, and lname as params to ctor.
-     * Declare String object named res and assign pIn.next() to res
-     * Declare double variable named fee and assign pIn.nextDouble() to fee
-     * Declare int variable named credits and assign pIn.nextInt() to credits
-     * If res.equals("R") Then
-     *    Call setResidency(OnCampusStudent.RESIDENT) on student
-     * Else
-     *    Call setResidency(OnCampusStudent.NON_RESIDENT) on student
-     * End If
-     * Call setProgramFee(fee) on student
-     * Call setCredits(credits) on student
-     * Return student
      */
-    ???
+    private OnCampusStudent readOnCampusStudent(Scanner input) {
+        String id = input.next();
+        String lastName = input.next();
+        String firstName = input.next();
+        OnCampusStudent onCampusStudent = new OnCampusStudent(id, firstName, lastName);
+        String res = input.next();
+        double fee = input.nextDouble();
+        int credits = input.nextInt();
+        if (res.equals("R")) {
+            onCampusStudent.setResidency(OnCampusStudent.RESIDENT);
+        } else {
+            onCampusStudent.setResidency(OnCampusStudent.NON_RESIDENT);
+        }
+        onCampusStudent.setProgramFee(fee);
+        onCampusStudent.setCredits(credits);
+        return onCampusStudent;
+    }
 
     /**
-     * readOnlineStudent()
-     *
      * Reads the information for an online student from the input file.
-     *
-     * PSEUDOCODE
-     * Declare String object id and assign pIn.next() to id
-     * Declare String object named lname and assign pIn.next() to lname
-     * Declare String object named fname and assign pIn.next() to fname
-     * Declare and create an OnlineStudent student. Pass id, fname, lname as params to the ctor.,
-     * Declare String object named fee and assign pIn.next() to fee
-     * Declare int variable named credits and assign pIn.nextInt() to credits
-     * If fee.equals("T")) Then
-     *     Call setTechFee(true) on student
-     * Else
-     *     Call setTechFee(false) on student
-     * End If
-     * Call setCredits(credits) on student
-     * Return student
      */
-    ???
+    private OnlineStudent readOnlineStudent(Scanner input) {
+        String id = input.next();
+        String lastName = input.next();
+        String firstName = input.next();
+        OnlineStudent onlineStudent = new OnlineStudent(id, firstName, lastName);
+        String fee = input.next();
+        int credits = input.nextInt();
+        if (fee.equals("T")) {
+            onlineStudent.setTechFee(true);
+        } else {
+            onlineStudent.setTechFee(false);
+        }
+        onlineStudent.setCredits(credits);
+        return onlineStudent;
+    }
 
     /**
-     * writeFile()
-     *
-     * Writes the output to "p02-tuition.txt" per the software requirements. Note that this method 
+     * Writes the output to "p02-tuition.txt" per the software requirements. Note that this method
      * throws FileNotFoundException if the output file could not be opened. The exception is caught
      * and handled in run().
-     *
-     * PSEUDOCODE
-     * Declare and create a PrintWriter object named out, opening "p02-tuition.txt" for writing
-     * Enhanced ForEach student in pStudentList Do
-     *     Using out.printf() output the student information per SW Requiremment 3
-     * End Enhanced ForEach
-     * Close the output file
      */
-    ???
+    private void writeFile(ArrayList<Student> studentList) throws FileNotFoundException {
+        PrintWriter output = new PrintWriter("p02-tuition.txt");
+        for (Student student : studentList) {
+            output.printf("%-16s%-20s%-15s%8.2f", student.getId() + student.getLastName()
+                    + student.getFirstName() + student.getTuition());
+        }
+        output.close();
+    }
 }

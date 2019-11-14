@@ -144,7 +144,7 @@ public abstract class Student implements Comparable<Student> {
     /**
      * Mutator method for tuition.
      */
-    protected void setTuition() {
+    protected void setTuition(double tuition) {
         this.tuition = tuition;
     }
 }
