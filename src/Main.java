@@ -99,18 +99,18 @@ public class Main {
         String id = input.next();
         String lastName = input.next();
         String firstName = input.next();
-        OnCampusStudent onCampusStudent = new OnCampusStudent(id, firstName, lastName);
+        OnCampusStudent student = new OnCampusStudent(id, firstName, lastName);
         String res = input.next();
         double fee = input.nextDouble();
         int credits = input.nextInt();
         if (res.equals("R")) {
-            onCampusStudent.setResidency(OnCampusStudent.RESIDENT);
+            student.setResidency(OnCampusStudent.RESIDENT);
         } else {
-            onCampusStudent.setResidency(OnCampusStudent.NON_RESIDENT);
+            student.setResidency(OnCampusStudent.NON_RESIDENT);
         }
-        onCampusStudent.setProgramFee(fee);
-        onCampusStudent.setCredits(credits);
-        return onCampusStudent;
+        student.setProgramFee(fee);
+        student.setCredits(credits);
+        return student;
     }
 
     /**
@@ -120,16 +120,16 @@ public class Main {
         String id = input.next();
         String lastName = input.next();
         String firstName = input.next();
-        OnlineStudent onlineStudent = new OnlineStudent(id, firstName, lastName);
+        OnlineStudent student = new OnlineStudent(id, firstName, lastName);
         String fee = input.next();
         int credits = input.nextInt();
         if (fee.equals("T")) {
-            onlineStudent.setTechFee(true);
+            student.setTechFee(true);
         } else {
-            onlineStudent.setTechFee(false);
+            student.setTechFee(false);
         }
-        onlineStudent.setCredits(credits);
-        return onlineStudent;
+        student.setCredits(credits);
+        return student;
     }
 
     /**
