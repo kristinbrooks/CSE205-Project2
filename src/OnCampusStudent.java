@@ -19,14 +19,14 @@ public class OnCampusStudent extends Student {
     private double programFee;
 
     /**
-     *
+     * Constructs an on campus student object using its superclass constructor.
      */
     public OnCampusStudent (String id, String firstName, String lastName) {
         super(firstName, lastName, id);
     }
 
     /**
-     *
+     * Overrides calcTuition from Main to have implementation specific to an on campus student.
      */
     @Override
     public void calcTuition() {
@@ -44,28 +44,28 @@ public class OnCampusStudent extends Student {
     }
 
     /**
-     *
+     * Accessor for programFee
      */
     public double getProgramFee() {
         return programFee;
     }
 
     /**
-     *
+     * Accessor for resident
      */
     public int getResidency() {
         return resident;
     }
 
     /**
-     *
+     * Mutator for programFee
      */
     public void setProgramFee(double programFee) {
         this.programFee = programFee;
     }
 
     /**
-     *
+     * Mutator for resident
      */
     public void setResidency(int resident) {
         this.resident = resident;

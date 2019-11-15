@@ -11,6 +11,10 @@
 // AUTHOR
 // Kristin Brooks, krbrook7, krbrook7@asu.edu
 //**************************************************************************************************
+
+/**
+ * Compares two Student objects
+ */
 public interface Comparable<Student> {
     int compareTo(Student student);
 }

@@ -16,14 +16,14 @@ public class OnlineStudent extends Student {
     private boolean techFee;
 
     /**
-     *
+     * Constructs an online student object using its superclass constructor.
      */
     public OnlineStudent(String id, String firstName, String lastName) {
         super(firstName, lastName, id);
     }
 
     /**
-     *
+     * Overrides calcTuition from Main to have implementation specific to an online student.
      */
     @Override
     public void calcTuition() {
@@ -35,14 +35,14 @@ public class OnlineStudent extends Student {
     }
 
     /**
-     *
+     * Accessor for techFee
      */
     public boolean getTechFee() {
         return techFee;
     }
 
     /**
-     *
+     * Mutator for techFee
      */
     public void setTechFee(boolean techFee) {
         this.techFee = techFee;
