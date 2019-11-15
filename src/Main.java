@@ -22,7 +22,6 @@
 // EDITED BY
 // Kristin Brooks, krbrook7, krbrook7@asu.edu
 //**************************************************************************************************
-import javax.swing.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
@@ -52,7 +51,7 @@ public class Main {
             System.exit(-1);
         }
         calcTuition(studentList);
-        Sorter.insertionSort(studentList, Sorter.SORT_ASCENDING);
+        Sorter.insertionSort(studentList);
         try {
             writeFile(studentList);
         } catch (FileNotFoundException noOutputFile) {

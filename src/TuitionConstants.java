@@ -16,16 +16,19 @@
 // Fulton Schools of Engineering
 // Arizona State University, Tempe, AZ 85287-8809
 //
-// SUBMITTED BY
+// EDITED
+// Changed access levels
+//
+// EDITED BY
 // Kristin Brooks, krbrook7, krbrook7@asu.edu
 //**************************************************************************************************
-public class TuitionConstants {
+class TuitionConstants {
 
-    public static final int ONCAMP_ADD_CREDITS  = 475;
-    public static final int MAX_CREDITS         = 18;
-    public static final int ONCAMP_NONRES_BASE  = 14875;
-    public static final int ONCAMP_RES_BASE     = 7575;
-    public static final int ONLINE_CREDIT_RATE  = 950;
-    public static final int ONLINE_TECH_FEE     = 75;
+    static final int ONCAMP_ADD_CREDITS  = 475;
+    static final int MAX_CREDITS         = 18;
+    static final int ONCAMP_NONRES_BASE  = 14875;
+    static final int ONCAMP_RES_BASE     = 7575;
+    static final int ONLINE_CREDIT_RATE  = 950;
+    static final int ONLINE_TECH_FEE     = 75;
 
 }

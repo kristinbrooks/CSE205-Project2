@@ -14,24 +14,22 @@
 // Fulton Schools of Engineering
 // Arizona State University, Tempe, AZ 85287-8809
 //
-// SUBMITTED BY
+// EDITED
+// Changed some access levels and removed unused parts
+//
+// EDITED BY
 // Kristin Brooks, krbrook7, krbrook7@asu.edu
 //**************************************************************************************************
 import java.util.ArrayList;
 
-public class Sorter {
-
-    // Pass one of these constants to insertionSort() to specify an ascending or descending sort.
-    public static final int SORT_ASCENDING  = 0;
-    public static final int SORT_DESCENDING = 1;
+class Sorter {
 
     /**
-     * Sorts pList into ascending (pOrder = SORT_ASCENDING) or descending (pOrder =
-     * SORT_DESCENDING) order using the insertion sort algorithm.
+     * Sorts pList into ascending order using the insertion sort algorithm.
      */
-    public static void insertionSort(ArrayList<Student> pList, int pOrder) {
+    static void insertionSort(ArrayList<Student> pList) {
         for (int i = 1; i < pList.size(); ++i) {
-            for (int j = i; keepMoving(pList, j, pOrder); --j) {
+            for (int j = i; keepMoving(pList, j); --j) {
                 swap(pList, j, j - 1);
             }
         }
@@ -66,13 +64,11 @@ public class Sorter {
      * operator is a personal choice, but you will see other programmers using the ternary operator
      * so you should know how it works.
      */
-    private static boolean keepMoving(ArrayList<Student> pList, int pIndex, int pOrder) {
+    private static boolean keepMoving(ArrayList<Student> pList, int pIndex) {
         if (pIndex < 1) return false;
         Student after = pList.get(pIndex);
         Student before = pList.get(pIndex - 1);
-        return (pOrder == SORT_ASCENDING) 
-            ? after.compareTo(before) < 0 
-            : after.compareTo(before) > 0;
+        return after.compareTo(before) < 0;
     }
 
     /**

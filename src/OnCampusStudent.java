@@ -21,7 +21,7 @@ public class OnCampusStudent extends Student {
     /**
      * Constructs an on campus student object using its superclass constructor.
      */
-    public OnCampusStudent (String id, String firstName, String lastName) {
+    OnCampusStudent(String id, String firstName, String lastName) {
         super(firstName, lastName, id);
     }
 
@@ -46,28 +46,28 @@ public class OnCampusStudent extends Student {
     /**
      * Accessor for programFee
      */
-    public double getProgramFee() {
+    private double getProgramFee() {
         return programFee;
     }
 
     /**
      * Accessor for resident
      */
-    public int getResidency() {
+    private int getResidency() {
         return resident;
     }
 
     /**
      * Mutator for programFee
      */
-    public void setProgramFee(double programFee) {
+    void setProgramFee(double programFee) {
         this.programFee = programFee;
     }
 
     /**
      * Mutator for resident
      */
-    public void setResidency(int resident) {
+    void setResidency(int resident) {
         this.resident = resident;
     }
 }

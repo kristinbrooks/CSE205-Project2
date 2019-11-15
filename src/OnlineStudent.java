@@ -18,7 +18,7 @@ public class OnlineStudent extends Student {
     /**
      * Constructs an online student object using its superclass constructor.
      */
-    public OnlineStudent(String id, String firstName, String lastName) {
+    OnlineStudent(String id, String firstName, String lastName) {
         super(firstName, lastName, id);
     }
 
@@ -37,14 +37,14 @@ public class OnlineStudent extends Student {
     /**
      * Accessor for techFee
      */
-    public boolean getTechFee() {
+    private boolean getTechFee() {
         return techFee;
     }
 
     /**
      * Mutator for techFee
      */
-    public void setTechFee(boolean techFee) {
+    void setTechFee(boolean techFee) {
         this.techFee = techFee;
     }
 }

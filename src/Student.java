@@ -39,7 +39,7 @@ public abstract class Student implements Comparable<Student> {
      * Creates a Student object and initializes the id, firstName, and lastName instance variables by
      * calling the mutator methods.
      */
-    public Student(String firstName, String lastName, String id) {
+    Student(String firstName, String lastName, String id) {
         setFirstName(firstName);
         setLastName(lastName);
         setId(id);
@@ -81,70 +81,70 @@ public abstract class Student implements Comparable<Student> {
     /**
      * Accessor method for credits.
      */
-    public int getCredits() {
+    int getCredits() {
         return credits;
     }
 
     /**
      * Accessor method for firstName.
      */
-    public String getFirstName() {
+    String getFirstName() {
         return firstName;
     }
 
     /**
      * Accessor method for id.
      */
-    public String getId() {
+    String getId() {
         return id;
     }
 
     /**
      * Accessor method for lastName.
      */
-    public String getLastName() {
+    String getLastName() {
         return lastName;
     }
 
     /**
      * Accessor method for tuition.
      */
-    public double getTuition() {
+    double getTuition() {
         return tuition;
     }
 
     /**
      * Mutator method for credits.
      */
-    public void setCredits(int credits) {
+    void setCredits(int credits) {
         this.credits = credits;
     }
 
     /**
      * Mutator method for firstName.
      */
-    public void setFirstName(String firstName) {
+    private void setFirstName(String firstName) {
         this.firstName = firstName;
     }
 
     /**
      * Mutator method for id.
      */
-    public void setId(String id) {
+    private void setId(String id) {
         this.id = id;
     }
 
     /**
      * Mutator method for lastName.
      */
-    public void setLastName(String lastName) {
+    private void setLastName(String lastName) {
         this.lastName = lastName;
     }
 
     /**
      * Mutator method for tuition.
      */
-    protected void setTuition(double tuition) {
+    void setTuition(double tuition) {
         this.tuition = tuition;
     }
 }
